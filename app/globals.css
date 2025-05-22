@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 224 76% 48%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 270 76% 53%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 12 76% 61%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 76% 48%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 230 25% 7%;
+    --foreground: 210 20% 98%;
+    --card: 230 25% 9%;
+    --card-foreground: 210 20% 98%;
+    --popover: 230 25% 7%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 224 76% 58%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 270 76% 63%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 230 25% 15%;
+    --muted-foreground: 217.9 10.6% 74.9%;
+    --accent: 12 76% 61%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 230 25% 15%;
+    --input: 230 25% 15%;
+    --ring: 224 76% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+/* Add cursor trail effect */
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.7;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.cursor-trail {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+/* Parallax effect */
+.parallax {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.parallax-layer {
+  transform: translateZ(0);
+  transition: transform 0.1s;
+}
+
+.parallax-deep {
+  transform: translateZ(-100px) scale(1.5);
+}
+
+.parallax-medium {
+  transform: translateZ(-50px) scale(1.25);
+}
+
+.parallax-shallow {
+  transform: translateZ(-25px) scale(1.125);
+}
+
+/* Skill bars animation */
+.skill-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Sticky navbar styles */
+.navbar-sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.navbar-sticky.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
