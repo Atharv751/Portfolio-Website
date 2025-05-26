@@ -15,7 +15,7 @@ const skills = [
     level: 50,
   },
   {
-    name: "Digital Marketing",
+    name: "Marketing",
     icon: <BarChart className="h-4 w-4 mr-1" />,
     level: 50,
   },
